@@ -29,14 +29,14 @@ public class ClienteControl {
         return clienteContent;
     }
 
-    public void updateCliente(Cliente cliente){
+    public void updateCliente(Cliente cliente, String attribute){
         Connection conn = null;
 
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
 
-        // TODO: Implement logic of update
+        new ClienteCRUD().updateCliente(conn, cliente, attribute);
 
         dbConnection.closeConnection(conn);
     }

@@ -12,7 +12,8 @@ public class ClienteCRUD {
         CallableStatement cs = null;
 
         try {
-            String plSQL = "{call pr_alta_cliente(?,?,?,?,?,?)}";
+            // TODO: change name of procedure in scripts to pr_insertar_cliente
+            String plSQL = "{call pr_insertar_cliente(?,?,?,?,?,?)}";
             cs = conn.prepareCall(plSQL);
 
             cs.setString(1, cliente.getRut());
@@ -30,31 +31,54 @@ public class ClienteCRUD {
 
     public String readCliente(Connection conn, String uid){
         CallableStatement cs = null;
-        String cliente = "";
+        String clienteValue = "";
 
         try {
-            String plSQL = "{? = call pr_generar_cliente(?)}";
+            String plSQL = "{? = call fn_consulta_cliente(?)}";
             cs = conn.prepareCall(plSQL);
             cs.setString(1, uid);
             cs.registerOutParameter(1, Types.VARCHAR);
 
             cs.execute();
 
-            cliente = cs.getNString(1);
+            clienteValue = cs.getNString(1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return cliente;
+        return clienteValue;
     }
 
-    public void updateCliente(Connection conn, String attribute, String value){
-        //TODO: Implement update logic
+    public void updateCliente(Connection conn, Cliente cliente, String attribute){
+        CallableStatement cs = null;
+
+        try {
+            String plSQL = "{call pr_actualizar_cliente(?,?,?)}";
+            cs = conn.prepareCall(plSQL);
+            cs.setString(1,cliente.getRut());
+            cs.setString(2,attribute);
+            cs.setString(3,getClienteAttributeValue(cliente, attribute));
+            cs.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String getClienteAttributeValue(Cliente cliente, String attribute){
+        return switch (attribute) {
+            case "nombre" -> cliente.getNombre();
+            case "apellido1" -> cliente.getApellido1();
+            case "apellido2" -> cliente.getApellido2();
+            case "domicilio" -> cliente.getDomicilio();
+            case "telefono" -> cliente.getTelefono();
+            default -> "";
+        };
     }
 
     public void deleteCliente(Connection conn, String uid){
         CallableStatement cs = null;
 
         try {
+            // TODO: Create in DB procedure to delete cliente
             String plSQL = "{call pr_eliminar_cliente(?)}";
             cs = conn.prepareCall(plSQL);
             cs.setString(1,uid);

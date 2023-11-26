@@ -2,7 +2,6 @@ package mx.datamasters.dbeditor.view;
 
 import mx.datamasters.dbeditor.control.ClienteControl;
 import mx.datamasters.dbeditor.data.Cliente;
-import mx.datamasters.dbeditor.model.ClienteCRUD;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -53,7 +52,44 @@ public class ClienteWindow extends JFrame implements ActionListener {
 
             this.pButtons.taResult.setText(new ClienteControl().readCliente(cliente));
         } else if (actionEvent.getSource().equals(this.pButtons.bUpdate)) {
-            // TODO: Implement logic of update
+            // TODO: Better management of update value
+            Cliente cliente = new Cliente();
+            cliente.setRut(askData("RUT"));
+            String attribute = "";
+            int attributeCons = JOptionPane.showOptionDialog(
+                    getParent(),
+                    "Selecciona el atributo a actualizar",
+                    "Escoje una opción",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    new String[]{"Nombre", "Apellido Paterno", "Apellido Paterno", "Domicilio", "Teléfono"},
+                    "Nombre"
+                    );
+            switch (attributeCons){
+                case 0 -> {
+                    cliente.setNombre(askData("Nombre"));
+                    attribute = "nombre";
+                }
+                case 1 -> {
+                    cliente.setApellido1(askData("Apellido paterno"));
+                    attribute = "apellido1";
+                }
+                case 2 -> {
+                    cliente.setApellido2(askData("Apellido materno"));
+                    attribute = "apellido2";
+                }
+                case 3 -> {
+                    cliente.setDomicilio(askData("Domicilio"));
+                    attribute = "domicilio";
+                }
+                case 4 -> {
+                    cliente.setTelefono(askData("Teléfono"));
+                    attribute = "telefono";
+                }
+            }
+
+            new ClienteControl().updateCliente(cliente, attribute);
         } else if (actionEvent.getSource().equals(this.pButtons.bDelete)) {
             Cliente cliente = new Cliente();
             cliente.setRut(askData("RUT"));
