@@ -10,7 +10,7 @@ public class FacturaCRUD {
         CallableStatement cs = null;
 
         try {
-            String plSQL = "{call pr_alta_factura(?,?)}";
+            String plSQL = "{call create_factura(?,?)}";
             cs = conn.prepareCall(plSQL);
 
             cs.setString(1, factura.getNumero());

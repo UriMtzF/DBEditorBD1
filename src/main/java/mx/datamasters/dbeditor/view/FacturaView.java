@@ -71,6 +71,7 @@ public class FacturaView extends JFrame implements ActionListener {
             new FacturaControl().deleteFactura(factura);
         } else if (actionEvent.getSource().equals(this.pButtons.bReadAll)) {
             this.pButtons.taResult.setText(new FacturaControl().readAllFactura());
+            // Buttons from Venta
         } else if (actionEvent.getSource().equals(this.bReadVenta)) {
             Venta venta = new Venta();
             venta.setFactura(askData("Número de factura"));
@@ -86,6 +87,20 @@ public class FacturaView extends JFrame implements ActionListener {
             new VentaControl().updateVenta(venta);
         } else if (actionEvent.getSource().equals(this.bReadAll)){
             this.pButtons.taResult.setText(new VentaControl().readAllVenta());
+        } else if (actionEvent.getSource().equals(this.bCreateVenta)) {
+            Venta venta = new Venta();
+            venta.setFactura(askData("Número de factura"));
+            venta.setProducto(askData("ID del producto"));
+            // TODO: Improve management of integers
+            venta.setCantidad(Integer.parseInt(askData("Cantidad de productos")));
+
+            new VentaControl().createVenta(venta);
+        } else if (actionEvent.getSource().equals(this.bDeleteVenta)) {
+            Venta venta = new Venta();
+            venta.setFactura(askData("Número de factura"));
+            venta.setProducto(askData("ID del producto"));
+
+            new VentaControl().deleteVenta(venta);
         }
     }
 

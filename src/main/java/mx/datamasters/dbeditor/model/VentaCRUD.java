@@ -12,9 +12,12 @@ public class VentaCRUD {
         CallableStatement cs = null;
 
         try {
-            //TODO: Change procedure name
-            String plSQL = "PROCEDIMIENTO";
+            String plSQL = "{call = call crear_venta(?,?,?,?)}";
             cs = conn.prepareCall(plSQL);
+            cs.setInt(1, venta.getCantidad());
+            cs.setString(2, venta.getFactura());
+            cs.setString(3, venta.getProducto());
+            cs.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -53,7 +56,18 @@ public class VentaCRUD {
         }
     }
     public void deleteVenta(Connection conn, Venta venta){
-        //TODO: Change procedure name
+        CallableStatement cs = null;
+
+        try {
+            String plSQL = "{call eliminar_venta(?,?)}";
+            cs = conn.prepareCall(plSQL);
+            cs.setString(1, venta.getFactura());
+            cs.setString(2, venta.getProducto());
+
+            cs.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     public String readAllVenta(Connection conn){
         CallableStatement cs = null;
