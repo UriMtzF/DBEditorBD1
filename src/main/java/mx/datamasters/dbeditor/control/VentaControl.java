@@ -31,6 +31,10 @@ public class VentaControl {
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
+
+        new VentaCRUD().updateVenta(conn, venta);
+
+        dbConnection.closeConnection(conn);
     }
     public void deleteVenta(Venta venta){
         Connection conn = null;
@@ -43,5 +47,11 @@ public class VentaControl {
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
+
+        String ventas = new VentaCRUD().readAllVenta(conn);
+
+        dbConnection.closeConnection(conn);
+
+        return ventas;
     }
 }

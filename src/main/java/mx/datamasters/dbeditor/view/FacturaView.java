@@ -76,6 +76,16 @@ public class FacturaView extends JFrame implements ActionListener {
             venta.setFactura(askData("Número de factura"));
 
             this.pButtons.taResult.setText(new VentaControl().readVenta(venta));
+        } else if (actionEvent.getSource().equals(this.bUpdateVenta)) {
+            Venta venta = new Venta();
+            venta.setFactura(askData("Número de factura"));
+            venta.setProducto(askData("ID del producto"));
+            // TODO: Improve management of integers
+            venta.setCantidad(Integer.parseInt(askData("Número de productos")));
+
+            new VentaControl().updateVenta(venta);
+        } else if (actionEvent.getSource().equals(this.bReadAll)){
+            this.pButtons.taResult.setText(new VentaControl().readAllVenta());
         }
     }
 

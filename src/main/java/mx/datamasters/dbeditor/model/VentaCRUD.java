@@ -38,13 +38,36 @@ public class VentaCRUD {
         return ventaValue;
     }
     public void updateVenta(Connection conn, Venta venta){
-        //TODO: Change procedure name
+        CallableStatement cs = null;
+
+        try {
+            String plSQL = "{call actualizar_venta()}";
+            cs = conn.prepareCall(plSQL);
+            cs.setString(1, venta.getFactura());
+            cs.setString(2, venta.getProducto());
+            cs.setInt(3, venta.getCantidad());
+
+            cs.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void deleteVenta(Connection conn, Venta venta){
         //TODO: Change procedure name
     }
     public String readAllVenta(Connection conn){
-        //TODO: Change procedure name
-        return "";
+        CallableStatement cs = null;
+        String ventas = "";
+
+        try {
+            String plSQL = "{? = call obtener_ventas}";
+            cs = conn.prepareCall(plSQL);
+            cs.registerOutParameter(1,Types.VARCHAR);
+
+            ventas = cs.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return ventas;
     }
 }
