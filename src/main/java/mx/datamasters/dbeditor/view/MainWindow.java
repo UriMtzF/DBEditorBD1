@@ -1,7 +1,5 @@
 package mx.datamasters.dbeditor.view;
 
-import mx.datamasters.dbeditor.data.Factura;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -46,9 +44,10 @@ public class MainWindow extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource().equals(bProducto)){
-            ProductoWindow productoWindow = new ProductoWindow();
+            ProductoWindow productoWindow = new ProductoWindow(this);
         } else if (actionEvent.getSource().equals(bCliente)) {
-            ClienteWindow clienteWindow = new ClienteWindow();
+            this.setVisible(false);
+            new ClienteWindow(this);
         } else if (actionEvent.getSource().equals(bFactura)) {
             FacturaView facturaView = new FacturaView();
         }
