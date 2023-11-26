@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ProductoWindow extends JFrame implements ActionListener {
-    private JFrame fParent;
+    private final JFrame fParent;
     private PanelButtons pButtons;
     public ProductoWindow(JFrame fParent) throws HeadlessException {
         this.fParent = fParent;

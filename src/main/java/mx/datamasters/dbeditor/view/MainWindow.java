@@ -49,7 +49,7 @@ public class MainWindow extends JFrame implements ActionListener {
             this.setVisible(false);
             new ClienteWindow(this);
         } else if (actionEvent.getSource().equals(bFactura)) {
-            FacturaView facturaView = new FacturaView();
+            FacturaView facturaView = new FacturaView(this);
         }
     }
 }
