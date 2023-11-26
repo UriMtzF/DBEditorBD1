@@ -35,7 +35,7 @@ public class FacturaControl {
 
         conn = dbConnection.openConnection();
 
-        // TODO: Implement updateFactura logic
+        new FacturaCRUD().updateFactura(conn, factura);
 
         dbConnection.closeConnection(conn);
     }
@@ -46,8 +46,17 @@ public class FacturaControl {
 
         conn = dbConnection.openConnection();
 
-        new FacturaCRUD().deleteFactura(conn, factura.getNumero());
+        new FacturaCRUD().deleteFactura(conn, factura);
 
         dbConnection.closeConnection(conn);
+    }
+
+    public String readAllFactura(){
+        Connection conn = null;
+        DBConnection dbConnection = new DBConnection();
+
+        conn = dbConnection.openConnection();
+
+        return new FacturaCRUD().readAllFactura(conn);
     }
 }

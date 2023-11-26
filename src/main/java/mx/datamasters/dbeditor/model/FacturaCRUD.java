@@ -1,5 +1,6 @@
 package mx.datamasters.dbeditor.model;
 
+import mx.datamasters.dbeditor.data.Cliente;
 import mx.datamasters.dbeditor.data.Factura;
 
 import java.sql.*;
@@ -27,7 +28,7 @@ public class FacturaCRUD {
         String factura = "";
 
         try {
-            String plSQL = "{? = call pr_obtener_datos_factura(?)}";
+            String plSQL = "{? = call crear_factura(?)}";
             cs = conn.prepareCall(plSQL);
             cs.setString(1,uid);
             cs.registerOutParameter(1,Types.VARCHAR);
@@ -42,29 +43,47 @@ public class FacturaCRUD {
         return factura;
     }
 
-    public void updateFactura(Connection conn, String attribute, String value){
+    public void updateFactura(Connection conn, Factura factura){
         CallableStatement cs = null;
 
         try {
             String plSQL = "{call pr_actualizar_factura(?,?,?)}";
-            // rut, atributo, valor
             cs = conn.prepareCall(plSQL);
+            cs.setString(1, factura.getNumero());
+            cs.setString(2, factura.getFecha());
+            cs.setString(3, factura.getRutCliente());
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void deleteFactura(Connection conn, String uid){
+    public void deleteFactura(Connection conn, Factura factura){
         CallableStatement cs = null;
 
         try {
-            String plSQL = "{call pr_eliminar_factura(?)}";
+            String plSQL = "{call eliminar_factura(?)}";
             cs = conn.prepareCall(plSQL);
-            cs.setString(1,uid);
+            cs.setString(1, factura.getNumero());
             cs.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String readAllFactura(Connection conn){
+        CallableStatement cs = null;
+        String facturas = "";
+
+        try {
+            String plSQL = "{? = call generar_facturas_return}";
+            cs = conn.prepareCall(plSQL);
+            cs.registerOutParameter(1, Types.VARCHAR);
+
+            facturas = cs.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return facturas;
     }
 }

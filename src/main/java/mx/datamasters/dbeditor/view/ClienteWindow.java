@@ -96,7 +96,7 @@ public class ClienteWindow extends JFrame implements ActionListener {
 
             new ClienteControl().deleteCliente(cliente);
         } else if (actionEvent.getSource().equals(this.pButtons.bReadAll)) {
-            // TODO: Implement logic of consult all
+            this.pButtons.taResult.setText(new ClienteControl().readAll());
         }
     }
 

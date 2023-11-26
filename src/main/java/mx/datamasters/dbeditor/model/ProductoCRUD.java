@@ -13,8 +13,7 @@ public class ProductoCRUD {
         CallableStatement cs = null;
 
         try {
-            //TODO: Script for creating a producto
-            String plSQL = "{call pr_alta_producto(?,?,?)}";
+            String plSQL = "{call agregar_producto(?,?,?)}";
             cs = conn.prepareCall(plSQL);
 
             cs.setString(1, producto.getCodigo());

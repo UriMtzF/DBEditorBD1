@@ -56,11 +56,19 @@ public class FacturaView extends JFrame implements ActionListener {
 
             this.pButtons.taResult.setText(new FacturaControl().readFactura(factura));
         } else if (actionEvent.getSource().equals(this.pButtons.bUpdate)) {
-            // TODO: Implement logic of update
+            Factura factura = new Factura();
+            factura.setNumero((askData("Número de factura")));
+            factura.setFecha(askData("Fecha de factura"));
+            factura.setRutCliente(askData("RUT del cliente"));
+
+            new FacturaControl().updateFactura(factura);
         } else if (actionEvent.getSource().equals(this.pButtons.bDelete)) {
-            // TODO: Implement logic of delete
+            Factura factura = new Factura();
+            factura.setNumero(askData("Numero de factura"));
+
+            new FacturaControl().deleteFactura(factura);
         } else if (actionEvent.getSource().equals(this.pButtons.bReadAll)) {
-            // TODO: Implement logic of consult all
+            this.pButtons.taResult.setText(new FacturaControl().readAllFactura());
         }
     }
 

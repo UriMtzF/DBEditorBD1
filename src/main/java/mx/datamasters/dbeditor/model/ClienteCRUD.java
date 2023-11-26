@@ -78,7 +78,6 @@ public class ClienteCRUD {
         CallableStatement cs = null;
 
         try {
-            // TODO: Create in DB procedure to delete cliente
             String plSQL = "{call pr_eliminar_cliente(?)}";
             cs = conn.prepareCall(plSQL);
             cs.setString(1,uid);
@@ -86,5 +85,22 @@ public class ClienteCRUD {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String readAllCliente(Connection conn){
+        CallableStatement cs = null;
+        String clientes = "";
+
+        try {
+            String plSQL = "{? = call pr obtener_datos_clientes}";
+            cs = conn.prepareCall(plSQL);
+            cs.registerOutParameter(1,Types.VARCHAR);
+            cs.execute();
+
+            clientes = cs.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return clientes;
     }
 }

@@ -51,4 +51,13 @@ public class ClienteControl {
 
         dbConnection.closeConnection(conn);
     }
+
+    public String readAll(){
+        Connection conn = null;
+        DBConnection dbConnection = new DBConnection();
+
+        conn = dbConnection.openConnection();
+
+        return new ClienteCRUD().readAllCliente(conn);
+    }
 }
