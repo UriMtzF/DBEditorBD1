@@ -47,7 +47,12 @@ public class ProductoWindow extends JFrame implements ActionListener {
 
             this.pButtons.taResult.setText(new ProductoControl().readProducto(producto));
         } else if (actionEvent.getSource().equals(this.pButtons.bUpdate)) {
-            // TODO: Implement logic of update
+            Producto producto = new Producto();
+            producto.setCodigo(askData("Código de producto"));
+            producto.setDescripcion(askData("Descripción del producto"));
+            producto.setPrecioUnitario(Double.parseDouble(askData("Precio por unidad")));
+
+            new ProductoControl().updateProducto(producto);
         } else if (actionEvent.getSource().equals(this.pButtons.bDelete)) {
             Producto producto = new Producto();
             producto.setCodigo("Código de producto");

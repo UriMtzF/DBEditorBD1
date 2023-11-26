@@ -23,7 +23,7 @@ public class ProductoControl {
 
         conn = dbConnection.openConnection();
 
-        String productoContent = new ProductoCRUD().readProducto(conn, producto.getCodigo());
+        String productoContent = new ProductoCRUD().readProducto(conn, producto);
 
         dbConnection.closeConnection(conn);
 
@@ -36,7 +36,7 @@ public class ProductoControl {
 
         conn = dbConnection.openConnection();
 
-        // TODO: Implement updateProducto logic
+        new ProductoCRUD().updateProducto(conn, producto);
 
         dbConnection.closeConnection(conn);
     }
@@ -47,7 +47,7 @@ public class ProductoControl {
 
         conn = dbConnection.openConnection();
 
-        new ProductoCRUD().deleteProducto(conn, producto.getCodigo());
+        new ProductoCRUD().deleteProducto(conn, producto);
 
         dbConnection.closeConnection(conn);
     }

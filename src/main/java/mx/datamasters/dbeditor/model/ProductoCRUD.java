@@ -1,5 +1,6 @@
 package mx.datamasters.dbeditor.model;
 
+import mx.datamasters.dbeditor.data.Cliente;
 import mx.datamasters.dbeditor.data.Producto;
 
 import java.sql.CallableStatement;
@@ -12,6 +13,7 @@ public class ProductoCRUD {
         CallableStatement cs = null;
 
         try {
+            //TODO: Script for creating a producto
             String plSQL = "{call pr_alta_producto(?,?,?)}";
             cs = conn.prepareCall(plSQL);
 
@@ -25,38 +27,68 @@ public class ProductoCRUD {
         }
     }
 
-    public String readProducto(Connection conn, String uid){
+    public String readProducto(Connection conn, Producto producto){
         CallableStatement cs = null;
-        String producto = "";
+        String productoValue = "";
 
         try {
-            String plSQL = "{? = call pr_generar_producto(?)}";
+            String plSQL = "{? = call mostrar_producto_info(?)}";
             cs = conn.prepareCall(plSQL);
-            cs.setString(1,uid);
+            cs.setString(1, producto.getCodigo());
             cs.registerOutParameter(1, Types.VARCHAR);
             cs.execute();
 
-            producto = cs.getString(1);
+            productoValue = cs.getString(1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return producto;
+        return productoValue;
     }
 
-    public void updateProducto(Connection conn, String attribute, String value){
-        // TODO: Implement update logic
-    }
-
-    public void deleteProducto(Connection conn, String uid){
+    public void updateProducto(Connection conn, Producto producto){
         CallableStatement cs = null;
 
         try {
-            String plSQL = "{call pr_eliminar_producto(?)}";
+            // TODO: Change the name of procedure to pr_modificar_producto
+            String plSQL = "{call modificar_producto(?,?,?)}";
+
             cs = conn.prepareCall(plSQL);
-            cs.setString(1,uid);
+            cs.setString(1, producto.getCodigo());
+            cs.setString(2, producto.getDescripcion());
+            cs.setDouble(3, producto.getPrecioUnitario());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteProducto(Connection conn, Producto producto){
+        CallableStatement cs = null;
+
+        try {
+            String plSQL = "{call eliminar_producto(?)}";
+            cs = conn.prepareCall(plSQL);
+            cs.setString(1, producto.getCodigo());
             cs.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String readAllProducto(Connection conn, Producto producto){
+        CallableStatement cs = null;
+        String productos = "";
+
+        try {
+            // TODO: Modify procedure to return a table instead of array
+            String plSQL = "{? = call listas_productos()}";
+            cs = conn.prepareCall(plSQL);
+            cs.registerOutParameter(1,Types.VARCHAR);
+            cs.execute();
+
+            productos = cs.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return productos;
     }
 }
