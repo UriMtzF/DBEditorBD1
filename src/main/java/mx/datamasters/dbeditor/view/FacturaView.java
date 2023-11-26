@@ -2,8 +2,10 @@ package mx.datamasters.dbeditor.view;
 
 import mx.datamasters.dbeditor.control.FacturaControl;
 import mx.datamasters.dbeditor.control.ProductoControl;
+import mx.datamasters.dbeditor.control.VentaControl;
 import mx.datamasters.dbeditor.data.Factura;
 import mx.datamasters.dbeditor.data.Producto;
+import mx.datamasters.dbeditor.data.Venta;
 
 import javax.swing.*;
 import java.awt.*;
@@ -64,11 +66,16 @@ public class FacturaView extends JFrame implements ActionListener {
             new FacturaControl().updateFactura(factura);
         } else if (actionEvent.getSource().equals(this.pButtons.bDelete)) {
             Factura factura = new Factura();
-            factura.setNumero(askData("Numero de factura"));
+            factura.setNumero(askData("Número de factura"));
 
             new FacturaControl().deleteFactura(factura);
         } else if (actionEvent.getSource().equals(this.pButtons.bReadAll)) {
             this.pButtons.taResult.setText(new FacturaControl().readAllFactura());
+        } else if (actionEvent.getSource().equals(this.bReadVenta)) {
+            Venta venta = new Venta();
+            venta.setFactura(askData("Número de factura"));
+
+            this.pButtons.taResult.setText(new VentaControl().readVenta(venta));
         }
     }
 
