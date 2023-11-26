@@ -78,8 +78,7 @@ public class ProductoCRUD {
         String productos = "";
 
         try {
-            // TODO: Modify procedure to return a table instead of array
-            String plSQL = "{? = call listas_productos()}";
+            String plSQL = "{? = call obtener_productos()}";
             cs = conn.prepareCall(plSQL);
             cs.registerOutParameter(1,Types.VARCHAR);
             cs.execute();
