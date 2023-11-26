@@ -51,7 +51,13 @@ public class FacturaView extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource().equals(this.pButtons.bCreate)){
-            // TODO: Implement logic of creating
+            Factura factura = new Factura();
+            factura.setNumero(askData("Número de factura"));
+            // TODO: Check date management
+            factura.setFecha(askData("Fecha"));
+            factura.setRutCliente(askData("RUT del cliente"));
+
+            new FacturaControl().createFactura(factura);
         } else if (actionEvent.getSource().equals(this.pButtons.bRead)) {
             Factura factura = new Factura();
             factura.setNumero(askData("Número de factura"));

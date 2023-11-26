@@ -10,12 +10,13 @@ public class FacturaCRUD {
         CallableStatement cs = null;
 
         try {
-            String plSQL = "{call create_factura(?,?)}";
+            String plSQL = "{call create_factura(?,?,?)}";
             cs = conn.prepareCall(plSQL);
 
             cs.setString(1, factura.getNumero());
             // TODO: Change logic to manage dates correctly
             cs.setString(2, factura.getFecha());
+            cs.setString(3, factura.getRutCliente());
 
             cs.execute();
         } catch (SQLException e) {
