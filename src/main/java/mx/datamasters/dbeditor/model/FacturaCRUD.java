@@ -27,7 +27,7 @@ public class FacturaCRUD {
         String factura = "";
 
         try {
-            String plSQL = "{? = call pr_generar_factura(?)}";
+            String plSQL = "{? = call pr_obtener_datos_factura(?)}";
             cs = conn.prepareCall(plSQL);
             cs.setString(1,uid);
             cs.registerOutParameter(1,Types.VARCHAR);

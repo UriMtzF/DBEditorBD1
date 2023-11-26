@@ -1,6 +1,8 @@
 package mx.datamasters.dbeditor.view;
 
+import mx.datamasters.dbeditor.control.FacturaControl;
 import mx.datamasters.dbeditor.control.ProductoControl;
+import mx.datamasters.dbeditor.data.Factura;
 import mx.datamasters.dbeditor.data.Producto;
 
 import javax.swing.*;
@@ -47,15 +49,27 @@ public class FacturaView extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource().equals(this.pButtons.bCreate)){
-
+            // TODO: Implement logic of creating
         } else if (actionEvent.getSource().equals(this.pButtons.bRead)) {
+            Factura factura = new Factura();
+            factura.setNumero(askData("Número de factura"));
 
+            this.pButtons.taResult.setText(new FacturaControl().readFactura(factura));
         } else if (actionEvent.getSource().equals(this.pButtons.bUpdate)) {
             // TODO: Implement logic of update
         } else if (actionEvent.getSource().equals(this.pButtons.bDelete)) {
-
+            // TODO: Implement logic of delete
         } else if (actionEvent.getSource().equals(this.pButtons.bReadAll)) {
             // TODO: Implement logic of consult all
         }
+    }
+
+    public String askData(String attribute){
+        return JOptionPane.showInputDialog(
+                getParent(),
+                attribute,
+                "Escribe el valor",
+                JOptionPane.QUESTION_MESSAGE
+        );
     }
 }
