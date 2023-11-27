@@ -12,7 +12,6 @@ public class ClienteCRUD {
         CallableStatement cs = null;
 
         try {
-            // TODO: change name of procedure in scripts to pr_insertar_cliente
             String plSQL = "{call pr_insertar_cliente(?,?,?,?,?,?)}";
             cs = conn.prepareCall(plSQL);
 

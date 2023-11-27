@@ -52,7 +52,6 @@ public class ClienteWindow extends JFrame implements ActionListener {
 
             this.pButtons.taResult.setText(new ClienteControl().readCliente(cliente));
         } else if (actionEvent.getSource().equals(this.pButtons.bUpdate)) {
-            // TODO: Better management of update value
             Cliente cliente = new Cliente();
             cliente.setRut(askData("RUT"));
             String attribute = "";

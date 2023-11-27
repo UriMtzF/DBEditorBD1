@@ -47,7 +47,6 @@ public class ProductoCRUD {
         CallableStatement cs = null;
 
         try {
-            // TODO: Change the name of procedure to pr_modificar_producto
             String plSQL = "{call modificar_producto(?,?,?)}";
 
             cs = conn.prepareCall(plSQL);
