@@ -3,7 +3,6 @@ package mx.datamasters.dbeditor.data;
 public class Venta extends Data{
     String factura, producto;
     int cantidad;
-    double total;
 
     public String getFactura() {
         return factura;
@@ -27,13 +26,5 @@ public class Venta extends Data{
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
     }
 }

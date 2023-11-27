@@ -44,12 +44,12 @@ public class MainWindow extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource().equals(bProducto)){
-            ProductoWindow productoWindow = new ProductoWindow(this);
+            new ProductoWindow(this);
         } else if (actionEvent.getSource().equals(bCliente)) {
             this.setVisible(false);
             new ClienteWindow(this);
         } else if (actionEvent.getSource().equals(bFactura)) {
-            FacturaView facturaView = new FacturaView(this);
+            new FacturaView(this);
         }
     }
 }

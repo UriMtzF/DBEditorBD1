@@ -1,13 +1,15 @@
 package mx.datamasters.dbeditor.model;
 
-import mx.datamasters.dbeditor.data.Cliente;
 import mx.datamasters.dbeditor.data.Factura;
 
-import java.sql.*;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Types;
 
 public class FacturaCRUD {
     public void createFactura(Connection conn, Factura factura){
-        CallableStatement cs = null;
+        CallableStatement cs;
 
         try {
             String plSQL = "{call create_factura(?,?,?)}";
@@ -25,8 +27,8 @@ public class FacturaCRUD {
     }
 
     public String readFactura(Connection conn, String uid){
-        CallableStatement cs = null;
-        String factura = "";
+        CallableStatement cs;
+        String factura;
 
         try {
             String plSQL = "{? = call crear_factura(?)}";
@@ -45,7 +47,7 @@ public class FacturaCRUD {
     }
 
     public void updateFactura(Connection conn, Factura factura){
-        CallableStatement cs = null;
+        CallableStatement cs;
 
         try {
             String plSQL = "{call pr_actualizar_factura(?,?,?)}";
@@ -60,7 +62,7 @@ public class FacturaCRUD {
     }
 
     public void deleteFactura(Connection conn, Factura factura){
-        CallableStatement cs = null;
+        CallableStatement cs;
 
         try {
             String plSQL = "{call eliminar_factura(?)}";
@@ -73,8 +75,8 @@ public class FacturaCRUD {
     }
 
     public String readAllFactura(Connection conn){
-        CallableStatement cs = null;
-        String facturas = "";
+        CallableStatement cs;
+        String facturas;
 
         try {
             String plSQL = "{? = call generar_facturas_return}";

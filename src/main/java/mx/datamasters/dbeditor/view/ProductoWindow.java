@@ -1,8 +1,6 @@
 package mx.datamasters.dbeditor.view;
 
-import mx.datamasters.dbeditor.control.ClienteControl;
 import mx.datamasters.dbeditor.control.ProductoControl;
-import mx.datamasters.dbeditor.data.Cliente;
 import mx.datamasters.dbeditor.data.Producto;
 
 import javax.swing.*;
@@ -12,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class ProductoWindow extends JFrame implements ActionListener {
     private final JFrame fParent;
-    private PanelButtons pButtons;
+    private final PanelButtons pButtons;
     public ProductoWindow(JFrame fParent) throws HeadlessException {
         this.fParent = fParent;
         this.fParent.setVisible(false);

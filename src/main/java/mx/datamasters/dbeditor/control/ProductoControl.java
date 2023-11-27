@@ -8,7 +8,7 @@ import java.sql.Connection;
 
 public class ProductoControl {
     public void createProducto(Producto producto){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
@@ -18,7 +18,7 @@ public class ProductoControl {
     }
 
     public String readProducto(Producto producto){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
@@ -31,7 +31,7 @@ public class ProductoControl {
     }
 
     public void updateProducto(Producto producto){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
@@ -42,7 +42,7 @@ public class ProductoControl {
     }
 
     public void deleteProducto(Producto producto){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
@@ -53,7 +53,7 @@ public class ProductoControl {
     }
 
     public String readAllProducto(){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();

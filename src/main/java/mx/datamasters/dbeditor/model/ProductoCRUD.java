@@ -9,7 +9,7 @@ import java.sql.Types;
 
 public class ProductoCRUD {
     public void createProducto(Connection conn, Producto producto){
-        CallableStatement cs = null;
+        CallableStatement cs;
 
         try {
             String plSQL = "{call agregar_producto(?,?,?)}";
@@ -26,8 +26,8 @@ public class ProductoCRUD {
     }
 
     public String readProducto(Connection conn, Producto producto){
-        CallableStatement cs = null;
-        String productoValue = "";
+        CallableStatement cs;
+        String productoValue;
 
         try {
             String plSQL = "{? = call mostrar_producto_info(?)}";
@@ -44,7 +44,7 @@ public class ProductoCRUD {
     }
 
     public void updateProducto(Connection conn, Producto producto){
-        CallableStatement cs = null;
+        CallableStatement cs;
 
         try {
             String plSQL = "{call modificar_producto(?,?,?)}";
@@ -59,7 +59,7 @@ public class ProductoCRUD {
     }
 
     public void deleteProducto(Connection conn, Producto producto){
-        CallableStatement cs = null;
+        CallableStatement cs;
 
         try {
             String plSQL = "{call eliminar_producto(?)}";
@@ -72,8 +72,8 @@ public class ProductoCRUD {
     }
 
     public String readAllProducto(Connection conn){
-        CallableStatement cs = null;
-        String productos = "";
+        CallableStatement cs;
+        String productos;
 
         try {
             String plSQL = "{? = call obtener_productos()}";

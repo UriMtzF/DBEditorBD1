@@ -8,8 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ClienteWindow extends JFrame implements ActionListener {
-    private JFrame fParent;
-    private PanelButtons pButtons;
+    private final JFrame fParent;
+    private final PanelButtons pButtons;
     public ClienteWindow(JFrame fParent) {
         this.fParent = fParent;
         this.fParent.setVisible(false);

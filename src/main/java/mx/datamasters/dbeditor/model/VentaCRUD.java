@@ -9,7 +9,7 @@ import java.sql.Types;
 
 public class VentaCRUD {
     public void createVenta(Connection conn, Venta venta){
-        CallableStatement cs = null;
+        CallableStatement cs;
 
         try {
             String plSQL = "{call = call crear_venta(?,?,?,?)}";
@@ -23,8 +23,8 @@ public class VentaCRUD {
         }
     }
     public String readVenta(Connection conn, Venta venta){
-        CallableStatement cs = null;
-        String ventaValue = "";
+        CallableStatement cs;
+        String ventaValue;
 
         try {
             String plSQL = "{? = call mostrar_venta_especifica(?)}";
@@ -41,7 +41,7 @@ public class VentaCRUD {
         return ventaValue;
     }
     public void updateVenta(Connection conn, Venta venta){
-        CallableStatement cs = null;
+        CallableStatement cs;
 
         try {
             String plSQL = "{call actualizar_venta()}";
@@ -56,7 +56,7 @@ public class VentaCRUD {
         }
     }
     public void deleteVenta(Connection conn, Venta venta){
-        CallableStatement cs = null;
+        CallableStatement cs;
 
         try {
             String plSQL = "{call eliminar_venta(?,?)}";
@@ -70,8 +70,8 @@ public class VentaCRUD {
         }
     }
     public String readAllVenta(Connection conn){
-        CallableStatement cs = null;
-        String ventas = "";
+        CallableStatement cs;
+        String ventas;
 
         try {
             String plSQL = "{? = call obtener_ventas}";

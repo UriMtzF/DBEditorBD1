@@ -8,7 +8,7 @@ import java.sql.Connection;
 
 public class FacturaControl {
     public void createFactura(Factura factura){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
@@ -18,7 +18,7 @@ public class FacturaControl {
     }
 
     public String readFactura(Factura factura){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
@@ -30,7 +30,7 @@ public class FacturaControl {
     }
 
     public void updateFactura(Factura factura){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
@@ -41,7 +41,7 @@ public class FacturaControl {
     }
 
     public void deleteFactura(Factura factura){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
@@ -52,7 +52,7 @@ public class FacturaControl {
     }
 
     public String readAllFactura(){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();

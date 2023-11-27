@@ -9,7 +9,7 @@ import java.sql.Types;
 
 public class ClienteCRUD {
     public void createCliente(Connection conn, Cliente cliente){
-        CallableStatement cs = null;
+        CallableStatement cs;
 
         try {
             String plSQL = "{call pr_insertar_cliente(?,?,?,?,?,?)}";
@@ -29,8 +29,8 @@ public class ClienteCRUD {
     }
 
     public String readCliente(Connection conn, String uid){
-        CallableStatement cs = null;
-        String clienteValue = "";
+        CallableStatement cs;
+        String clienteValue;
 
         try {
             String plSQL = "{? = call fn_consulta_cliente(?)}";
@@ -48,7 +48,7 @@ public class ClienteCRUD {
     }
 
     public void updateCliente(Connection conn, Cliente cliente, String attribute){
-        CallableStatement cs = null;
+        CallableStatement cs;
 
         try {
             String plSQL = "{call pr_actualizar_cliente(?,?,?)}";
@@ -74,7 +74,7 @@ public class ClienteCRUD {
     }
 
     public void deleteCliente(Connection conn, String uid){
-        CallableStatement cs = null;
+        CallableStatement cs;
 
         try {
             String plSQL = "{call pr_eliminar_cliente(?)}";
@@ -87,8 +87,8 @@ public class ClienteCRUD {
     }
 
     public String readAllCliente(Connection conn){
-        CallableStatement cs = null;
-        String clientes = "";
+        CallableStatement cs;
+        String clientes;
 
         try {
             String plSQL = "{? = call pr obtener_datos_clientes}";

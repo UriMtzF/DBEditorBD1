@@ -1,10 +1,8 @@
 package mx.datamasters.dbeditor.view;
 
 import mx.datamasters.dbeditor.control.FacturaControl;
-import mx.datamasters.dbeditor.control.ProductoControl;
 import mx.datamasters.dbeditor.control.VentaControl;
 import mx.datamasters.dbeditor.data.Factura;
-import mx.datamasters.dbeditor.data.Producto;
 import mx.datamasters.dbeditor.data.Venta;
 
 import javax.swing.*;
@@ -13,9 +11,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FacturaView extends JFrame implements ActionListener {
-    private JFrame fParent;
-    private PanelButtons pButtons;
-    private JButton bCreateVenta, bReadVenta, bUpdateVenta, bDeleteVenta, bReadAll;
+    private final JFrame fParent;
+    private final PanelButtons pButtons;
+    private final JButton bCreateVenta;
+    private final JButton bReadVenta;
+    private final JButton bUpdateVenta;
+    private final JButton bDeleteVenta;
+    private final JButton bReadAll;
     public FacturaView(JFrame fParent) throws HeadlessException {
         this.fParent = fParent;
         this.fParent.setVisible(false);
@@ -25,7 +27,7 @@ public class FacturaView extends JFrame implements ActionListener {
 
         pButtons = new PanelButtons();
 
-        JPanel pButtonsRight = new JPanel(new GridLayout(5,1));
+        new JPanel(new GridLayout(5, 1));
         bCreateVenta = new JButton("Agregar venta");
         this.bCreateVenta.addActionListener(this);
         bReadVenta = new JButton("Visualizar venta");

@@ -8,7 +8,7 @@ import java.sql.Connection;
 
 public class ClienteControl {
     public void createCliente(Cliente cliente){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
@@ -18,7 +18,7 @@ public class ClienteControl {
     }
 
     public String readCliente(Cliente cliente){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
@@ -30,7 +30,7 @@ public class ClienteControl {
     }
 
     public void updateCliente(Cliente cliente, String attribute){
-        Connection conn = null;
+        Connection conn;
 
         DBConnection dbConnection = new DBConnection();
 
@@ -42,7 +42,7 @@ public class ClienteControl {
     }
 
     public void deleteCliente(Cliente cliente){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
@@ -53,7 +53,7 @@ public class ClienteControl {
     }
 
     public String readAll(){
-        Connection conn = null;
+        Connection conn;
         DBConnection dbConnection = new DBConnection();
 
         conn = dbConnection.openConnection();
