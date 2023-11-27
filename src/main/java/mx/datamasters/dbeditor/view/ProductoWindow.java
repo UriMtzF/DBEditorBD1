@@ -23,6 +23,12 @@ public class ProductoWindow extends JFrame implements ActionListener {
         pButtons = new PanelButtons();
         this.add(pButtons);
 
+        this.pButtons.bCreate.addActionListener(this);
+        this.pButtons.bRead.addActionListener(this);
+        this.pButtons.bUpdate.addActionListener(this);
+        this.pButtons.bDelete.addActionListener(this);
+        this.pButtons.bReadAll.addActionListener(this);
+
         this.pack();
     }
 
@@ -43,7 +49,7 @@ public class ProductoWindow extends JFrame implements ActionListener {
             new ProductoControl().createProducto(producto);
         } else if (actionEvent.getSource().equals(this.pButtons.bRead)) {
             Producto producto = new Producto();
-            producto.setCodigo("Código de producto");
+            producto.setCodigo(askData("Código de producto"));
 
             this.pButtons.taResult.setText(new ProductoControl().readProducto(producto));
         } else if (actionEvent.getSource().equals(this.pButtons.bUpdate)) {
@@ -55,11 +61,11 @@ public class ProductoWindow extends JFrame implements ActionListener {
             new ProductoControl().updateProducto(producto);
         } else if (actionEvent.getSource().equals(this.pButtons.bDelete)) {
             Producto producto = new Producto();
-            producto.setCodigo("Código de producto");
+            producto.setCodigo(askData("Código de producto"));
 
             new ProductoControl().deleteProducto(producto);
         } else if (actionEvent.getSource().equals(this.pButtons.bReadAll)) {
-            // TODO: Implement logic of consult all
+            this.pButtons.taResult.setText(new ProductoControl().readAllProducto());
         }
     }
 

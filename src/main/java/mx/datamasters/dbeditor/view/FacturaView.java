@@ -27,10 +27,21 @@ public class FacturaView extends JFrame implements ActionListener {
 
         JPanel pButtonsRight = new JPanel(new GridLayout(5,1));
         bCreateVenta = new JButton("Agregar venta");
+        this.bCreateVenta.addActionListener(this);
         bReadVenta = new JButton("Visualizar venta");
+        this.bReadVenta.addActionListener(this);
         bUpdateVenta = new JButton("Actualizar venta");
+        this.bUpdateVenta.addActionListener(this);
         bDeleteVenta = new JButton("Eliminar venta");
+        this.bDeleteVenta.addActionListener(this);
         bReadAll = new JButton("Mostrar todas las ventas");
+        this.bReadAll.addActionListener(this);
+
+        this.pButtons.bCreate.addActionListener(this);
+        this.pButtons.bRead.addActionListener(this);
+        this.pButtons.bUpdate.addActionListener(this);
+        this.pButtons.bDelete.addActionListener(this);
+        this.pButtons.bReadAll.addActionListener(this);
 
         this.pButtons.pRight.add(bCreateVenta);
         this.pButtons.pRight.add(bReadVenta);

@@ -51,4 +51,17 @@ public class ProductoControl {
 
         dbConnection.closeConnection(conn);
     }
+
+    public String readAllProducto(){
+        Connection conn = null;
+        DBConnection dbConnection = new DBConnection();
+
+        conn = dbConnection.openConnection();
+
+        String productos = new ProductoCRUD().readAllProducto(conn);
+
+        dbConnection.closeConnection(conn);
+
+        return productos;
+    }
 }

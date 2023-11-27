@@ -1,6 +1,5 @@
 package mx.datamasters.dbeditor.model;
 
-import mx.datamasters.dbeditor.data.Cliente;
 import mx.datamasters.dbeditor.data.Producto;
 
 import java.sql.CallableStatement;
@@ -73,7 +72,7 @@ public class ProductoCRUD {
         }
     }
 
-    public String readAllProducto(Connection conn, Producto producto){
+    public String readAllProducto(Connection conn){
         CallableStatement cs = null;
         String productos = "";
 
